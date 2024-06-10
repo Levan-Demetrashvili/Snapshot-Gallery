@@ -1,13 +1,18 @@
-import React from "react";
-import { getImages } from "../helper";
-import { API_KEY, API_URL, IMG_PER_PAGE } from "../config";
+import React, { useState } from 'react';
+import Photo from './Photo';
+import Loader from './Loader';
+import ErrorMessage from './ErrorMessage';
 
-export default function Gallery() {
+export default function Gallery({ photosData, query, isLoading, readyToRender }) {
+  const noImagesFound = !photosData?.results?.length;
+  const listItems = photosData?.results?.map(data => <Photo key={data.id} url={data.urls.small} description={data.slug} />);
   return (
-    <div className='gallery'>
-      <h2>Mountain Images</h2>;
-      <div className='photos'>
-        <ul></ul>
+    <div className="gallery">
+      <h2>{query} Images</h2>
+      <div className="photos">
+        {isLoading && <Loader />}
+        {readyToRender && <ul>{listItems}</ul>}
+        {noImagesFound && readyToRender && <ErrorMessage />}
       </div>
     </div>
   );

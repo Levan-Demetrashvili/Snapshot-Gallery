@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap');
 
 * {
   padding: 0;
@@ -16,7 +16,7 @@ body {
 
 header h1 {
   font-size: 4rem;
-  font-family: "Lobster", sans-serif;
+  font-family: 'Lobster', sans-serif;
 }
 
 h1,
@@ -29,7 +29,7 @@ form {
   width: 460px;
   margin: 0 auto 32px;
 }
-form input.search {
+form input.search-input {
   width: 100%;
   padding: 10px 15px;
   background-color: #edeff0;
@@ -62,19 +62,93 @@ nav ul li {
   margin: 10px;
 }
 
-nav ul li a {
-  display: block;
+nav ul li button {
+  width: 100%;
   background-color: #051c33;
   border-radius: 3px;
   padding: 5px;
 
-  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
   color: #fff;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
 .gallery h2 {
   font-size: 2rem;
   margin: 52px 0 40px;
-  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', Helvetica, Arial, sans-serif;
+}
+
+.photos ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  list-style: none;
+}
+
+.photos ul li {
+  width: 220px;
+  height: 165px;
+  overflow: hidden;
+}
+
+.photos ul li img {
+  width: 100%;
+  transform: scale(1.25);
+  transition: transform 1.25s;
+}
+
+.photos ul li:hover img {
+  transform: scale(1.5);
+}
+
+.loader {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 16px solid #f3f3f3;
+  border-top-color: #051c33;
+
+  animation: spin 2s linear infinite;
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .photos ul {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 576px) {
+  body {
+    padding-top: 2em;
+  }
+  form {
+    width: auto;
+  }
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul li {
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+  .photos ul li {
+    width: auto;
+    height: auto;
+  }
 }

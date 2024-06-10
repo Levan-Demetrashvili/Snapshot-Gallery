@@ -1,9 +1,16 @@
 import React from "react";
 
-export default function NavItem({ text }) {
+export default function NavItem({ text, setQuery }) {
   return (
     <li>
-      <a href={`#/SnapScout/${text}`}>{text}</a>
+      <button
+        onClick={() => {
+          setQuery(text);
+          localStorage.setItem("query", text);
+        }}
+      >
+        {text}
+      </button>
     </li>
   );
 }
