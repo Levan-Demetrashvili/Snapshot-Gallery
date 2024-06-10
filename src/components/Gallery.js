@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Photo from './Photo';
 import Loader from './Loader';
 import ErrorMessage from './ErrorMessage';
